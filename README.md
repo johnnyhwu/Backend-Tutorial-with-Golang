@@ -27,4 +27,4 @@ I design three tables according to the three banking functions listed above.
 - entries table: each record represents a change of an account
 - transfers table: each record represents a transfer action between two accounts
 
-![database schema](assets/images/database schema.png)
+![database schema](https://github.com/johnnyhwu/Backend-Tutorial-with-Golang/blob/main/assets/images/database%20schema.png)
