@@ -5,6 +5,7 @@
 - [Project Description](#project-description)
 - [Application Description](#application-description)
 - [Database Schema Design](#database-schema-design)
+- [Setup Docker and PostgreSQL](#setup-docker-and-postgresql)
 
 ## Project Description
 
@@ -113,4 +114,11 @@ CREATE INDEX ON "transfers" ("to_account_id");
 CREATE INDEX ON "transfers" ("from_account_id", "to_account_id");
 ```
 
+## Setup Docker and PostgreSQL
+
+In this step, I will install Docker and run PostgreSQL container. Moreover, I will use Table Plus to interact with PostgreSQL to create database schema.
+
+- 01 : Install Docker
+
+  Just download and install Docker from its [official website]().
 
