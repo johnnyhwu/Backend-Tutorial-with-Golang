@@ -118,16 +118,67 @@ CREATE INDEX ON "transfers" ("from_account_id", "to_account_id");
 
 In this step, I will install Docker and run PostgreSQL container. Moreover, I will use Table Plus to interact with PostgreSQL to create database schema.
 
-- **01 : Install Docker**
+### 01 : Install Docker
 
-  Just download and install Docker from its [official website](https://www.docker.com/get-started). If you are not familiar with docker like me, you may gain some knowledge from these posts on stack overflow: [How is Docker different from a virtual machine?](https://stackoverflow.com/questions/16047306/how-is-docker-different-from-a-virtual-machine) and [Why docker has ability to run different linux distribution?](https://stackoverflow.com/questions/25444099/why-docker-has-ability-to-run-different-linux-distribution)
+Just download and install Docker from its [official website](https://www.docker.com/get-started). If you are not familiar with docker like me, you may gain some knowledge from these posts on stack overflow: [How is Docker different from a virtual machine?](https://stackoverflow.com/questions/16047306/how-is-docker-different-from-a-virtual-machine) and [Why docker has ability to run different linux distribution?](https://stackoverflow.com/questions/25444099/why-docker-has-ability-to-run-different-linux-distribution)
 
-- 02 : Download PostgreSQL Image for Docker
+### 02 : Download PostgreSQL Image for Docker
 
-  Open terminal and execute these comments:
+Open terminal and execute these comments:
 
-  List 
-  ```
-  docker ps
-  ```
+List all containers:
+```
+docker ps
+```
+
+List all available images:
+```
+docker images
+```
+
+Go to [Docker Hub](https://hub.docker.com/) and search [PostgreSQL image](https://hub.docker.com/_/postgres). 
+
+Pull the Docker image with specific version:
+```
+docker pull <image_name>:<image_tag>
+```
+
+I want the latest PostgreSQL image with minimal size:
+```
+docker pull postgres:14-alpine
+```
+
+Check if the image is downloaded succesfully:
+```
+docker images
+```
+
+### 03 : Start a Container
+
+`-d` means docker will run this container in background (detached mode)
+```
+docker run --name <container_name> -e <environment_variable> -d <image_name>:<image_tag>
+```
+
+There are lots of environment variables listed on this [page](https://hub.docker.com/_/postgres) I can provide for the container based on postgres:14-alpine image. For example, I can set `POSTGRES_PASSWORD` and `POSTGRES_USER` for the container.
+
+Because the container will be run in container network instead of host network, in order to connect to the container, I have to map the port of the container from container network to host network.
+
+Use `-p` to map the port:
+```
+docker run --name <container_name> -e <environment_variable> -p <host_port:container:port> -d <image_name>:<image_tag>
+```
+
+Start PostgreSQL container based on postgres:14-alpine:
+```
+docker run --name postgre14 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:14-alpine
+```
+
+Check if the container is started:
+```
+docker ps
+```
+
+
+
 
