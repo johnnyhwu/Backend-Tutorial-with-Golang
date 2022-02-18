@@ -118,7 +118,16 @@ CREATE INDEX ON "transfers" ("from_account_id", "to_account_id");
 
 In this step, I will install Docker and run PostgreSQL container. Moreover, I will use Table Plus to interact with PostgreSQL to create database schema.
 
-- 01 : Install Docker
+- **01 : Install Docker**
 
-  Just download and install Docker from its [official website]().
+  Just download and install Docker from its [official website](https://www.docker.com/get-started). If you are not familiar with docker like me, you may gain some knowledge from these posts on stack overflow: [How is Docker different from a virtual machine?](https://stackoverflow.com/questions/16047306/how-is-docker-different-from-a-virtual-machine) and [Why docker has ability to run different linux distribution?](https://stackoverflow.com/questions/25444099/why-docker-has-ability-to-run-different-linux-distribution)
+
+- 02 : Download PostgreSQL Image for Docker
+
+  Open terminal and execute these comments:
+
+  List 
+  ```
+  docker ps
+  ```
 
